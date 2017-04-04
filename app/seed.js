@@ -6,22 +6,22 @@ var data = [
     {   
         name : "Camp 1",
         image: "https://farm6.staticflickr.com/5181/5641024448_04fefbb64d.jpg",
-        description : "hskdhks aksdhfkasj askdhfksd kasdgfkashd aksdfaks daksdfkasd"
+        description : "Lorem ipsum dolor sit amet, ea his feugiat facilisi periculis, unum exerci singulis usu ea. Sed officiis principes voluptatibus ne, ne omnes melius vis. Qui te dicit expetenda, timeam nominavi te eam. An vel dolorem dolores.Lorem ipsum dolor sit amet, ea his feugiat facilisi periculis, unum exerci singulis usu ea. Sed officiis principes voluptatibus ne, ne omnes melius vis. Qui te dicit expetenda, timeam nominavi te eam. An vel dolorem dolores."
     },
     {   
         name : "Camp 2",
         image: "https://farm8.staticflickr.com/7252/7626464792_3e68c2a6a5.jpg",
-        description : "hskdhks aksdhfkasj askdhfksd kasdgfkashd aksdfaks daksdfkasd"
+        description : "Lorem ipsum dolor sit amet, ea his feugiat facilisi periculis, unum exerci singulis usu ea. Sed officiis principes voluptatibus ne, ne omnes melius vis. Qui te dicit expetenda, timeam nominavi te eam. An vel dolorem dolores.Lorem ipsum dolor sit amet, ea his feugiat facilisi periculis, unum exerci singulis usu ea. Sed officiis principes voluptatibus ne, ne omnes melius vis. Qui te dicit expetenda, timeam nominavi te eam. An vel dolorem dolores."
     },
     {   
         name : "Camp 3",
         image: "https://farm3.staticflickr.com/2311/2123340163_af7cba3be7.jpg",
-        description : "hskdhks aksdhfkasj askdhfksd kasdgfkashd aksdfaks daksdfkasd"
+        description : "Lorem ipsum dolor sit amet, ea his feugiat facilisi periculis, unum exerci singulis usu ea. Sed officiis principes voluptatibus ne, ne omnes melius vis. Qui te dicit expetenda, timeam nominavi te eam. An vel dolorem dolores.Lorem ipsum dolor sit amet, ea his feugiat facilisi periculis, unum exerci singulis usu ea. Sed officiis principes voluptatibus ne, ne omnes melius vis. Qui te dicit expetenda, timeam nominavi te eam. An vel dolorem dolores."
     },
     {   
         name : "Camp 4",
         image: "https://farm8.staticflickr.com/7205/7121863467_eb0aa64193.jpg",
-        description : "hskdhks aksdhfkasj askdhfksd kasdgfkashd aksdfaks daksdfkasd"
+        description : "Lorem ipsum dolor sit amet, ea his feugiat facilisi periculis, unum exerci singulis usu ea. Sed officiis principes voluptatibus ne, ne omnes melius vis. Qui te dicit expetenda, timeam nominavi te eam. An vel dolorem dolores.Lorem ipsum dolor sit amet, ea his feugiat facilisi periculis, unum exerci singulis usu ea. Sed officiis principes voluptatibus ne, ne omnes melius vis. Qui te dicit expetenda, timeam nominavi te eam. An vel dolorem dolores."
     }
 ]
 
