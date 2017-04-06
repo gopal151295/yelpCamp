@@ -42,7 +42,7 @@ app.use("/",indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
 
-SeedDB();
+//SeedDB();
 
 app.listen(3000, function(){
     console.log("Server has started!!! Listening at 3000...");
