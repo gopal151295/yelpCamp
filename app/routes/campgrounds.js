@@ -14,23 +14,29 @@ router.get("/", function(req, res){
     
 });
 
-router.post("/", function(req, res){
+router.post("/", isLoggedIn, function(req, res){
     var name = req.body.name;
     var image = req.body.image;
     var description = req.body.description;
-    var campground = {name : name , image: image, description: description};
-    Campground.create(campground, function(err, campground){
+    var author = {
+        id: req.user._id,
+        username: req.user.username
+    };
+    
+    var campground = {name : name , image: image, description: description, author: author};
+    Campground.create(campground, function(err, newlyCreated){
         if(err){
             console.log("Some error while saving campground");
         }
         else{
+            console.log(newlyCreated);
             res.redirect("/campgrounds");
         }
     });
     
 });
 
-router.get("/new", function(req, res){
+router.get("/new", isLoggedIn, function(req, res){
     res.render("campground/new");
 });
 
