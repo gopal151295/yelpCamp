@@ -8,6 +8,10 @@ var SeedDB = require("./seed.js");
 var Comment = require("./models/comment.js");
 var User = require("./models/user.js");
 
+var commentRoutes = require("./routes/comments.js");
+var campgroundRoutes = require("./routes/campgrounds.js");
+var indexRoutes = require("./routes/index.js");
+
 var app = express();
 mongoose.connect("mongodb://localhost/yelpcamp");
 
@@ -34,142 +38,11 @@ app.use(function(req, res, next){
     next();
 });
 
+app.use("/",indexRoutes);
+app.use("/campgrounds", campgroundRoutes);
+app.use("/campgrounds/:id/comments",commentRoutes);
 
 SeedDB();
-
-app.get("/", function(req, res){
-    res.render("home");
-});
-
-app.get("/campgrounds", function(req, res){
-    Campground.find({}, function(err, campgrounds){
-        if(err){
-            console.log("Some error while fetching campgrounds");
-        }
-        else{
-            res.render("campground/index", {campgrounds:campgrounds});
-        }
-    });
-    
-});
-
-app.post("/campgrounds", function(req, res){
-    var name = req.body.name;
-    var image = req.body.image;
-    var description = req.body.description;
-    var campground = {name : name , image: image, description: description};
-    Campground.create(campground, function(err, campground){
-        if(err){
-            console.log("Some error while saving campground");
-        }
-        else{
-            res.redirect("/campgrounds");
-        }
-    });
-    
-});
-
-app.get("/campgrounds/new", function(req, res){
-    res.render("campground/new");
-});
-
-app.get("/campgrounds/:id", function(req, res){
-    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
-        if (err){
-            console.log("There was error in finding campground");
-            console.log(err);
-        }
-        else{
-            res.render("campground/show", {campground: foundCampground});
-        }
-    } );
-    
-});
-
-app.get("/campgrounds/:id/comments/new", isLoggedIn, function(req, res){
-    Campground.findById(req.params.id, function(err, campground){
-         if (err){
-            console.log("There was error in finding campground");
-            console.log(err);
-        }
-        else{
-            res.render("comment/new", {campground: campground});
-        }
-    });
-});
-
-app.post("/campgrounds/:id/comments", isLoggedIn, function(req, res){
-    Campground.findById(req.params.id,function(err, campground){
-        if (err){
-            console.log(err);
-            res.redirect("/campgrounds");
-        }
-        else{
-           Comment.create(req.body.comment, function(err, comment){
-               if(err){
-                    console.log(err);
-               }
-               else{
-                   campground.comments.push(comment);
-                   campground.save();
-                   res.redirect("/campgrounds/" + req.params.id);
-               }
-           });
-        }
-    });
-    
-});
-
-//===============
-//ROUTES
-//===============
-app.get("/register", function(req, res){
-    res.render("register");
-});
-
-app.post("/register", function(req, res){
-    var newUser = new User({username: req.body.username});
-    User.register(newUser, req.body.password, function(err, user){
-        if(err){
-            console.log(err);
-            return res.render("register");
-        }
-        passport.authenticate("local") (req, res, function(){
-            res.redirect("/campgrounds");
-        });
-    });
-});
-
-//login
-app.get("/login", function(req, res){
-    res.render("login");
-});
-
-app.post("/login", passport.authenticate("local", 
-                 {
-                    successRedirect: "/campgrounds",
-                    failureRedirect: "/login"
-                }), function(req, res){
-   
-});
-
-//logout
-app.get("/logout", function(req, res){
-    req.logout();
-    res.redirect("/campgrounds");
-});
-
-function isLoggedIn(req, res, next){
-    if  (req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
-
-
-app.get("*", function(req, res){
-    res.render("toHome");
-});
 
 app.listen(3000, function(){
     console.log("Server has started!!! Listening at 3000...");
