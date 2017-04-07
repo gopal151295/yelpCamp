@@ -53,6 +53,6 @@ app.use("/campgrounds/:id/comments",commentRoutes);
 
 //SeedDB();
 
-app.listen(3000, function(){
+app.listen((process.env.PORT || 5000), function(){
     console.log("Server has started!!! Listening at 3000...");
 });
