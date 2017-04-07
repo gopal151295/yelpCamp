@@ -21,7 +21,7 @@ mongoose.connect("mongodb://gopal:151295@ds155150.mlab.com:55150/myyelpcamp");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(flash());
-
+app.set('views', __dirname + '/views');
 app.set("view engine", "ejs");
 app.use(express.static(__dirname+"/public"));
 app.use(methodOverride("_method"));
